@@ -1,9 +1,40 @@
-.title-color{
-    color: rgb(142, 57, 223);
+/* Roboto font  link*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:wght@400;500&family=Roboto:wght@400;500&family=Spline+Sans:wght@400;500&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
 }
-.input-background{
-    background-color: aliceblue;
+
+.title-color {
+  color: rgb(142, 57, 223);
 }
-.font-weight{
-    font-weight:500;
+.input-background {
+  background-color: aliceblue;
+}
+.font-weight {
+  font-weight: 500;
+}
+#warning-message{
+  color: red;
+  font-weight:500;
+  display: none;
+}
+#warning-message2{
+  color: red;
+  font-weight:500;
+  display: none;
+}
+#warning-message3{
+  color: red;
+  font-weight:500;
+  display: none;
+}
+#warning-message4{
+  color: red;
+  font-weight:500;
+  display: none;
+}
+#error-message{
+  color: red;
+  font-weight:500;
+  display: none;
 }
