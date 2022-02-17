@@ -5,7 +5,7 @@ body{
 }
 
 .title-color {
-  color: rgb(142, 57, 223);
+  color: rgb(59, 88, 219);
 }
 .input-background {
   background-color: aliceblue;
@@ -13,27 +13,8 @@ body{
 .font-weight {
   font-weight: 500;
 }
-#warning-message{
-  color: red;
-  font-weight:500;
-  display: none;
-}
-#warning-message2{
-  color: red;
-  font-weight:500;
-  display: none;
-}
-#warning-message3{
-  color: red;
-  font-weight:500;
-  display: none;
-}
-#warning-message4{
-  color: red;
-  font-weight:500;
-  display: none;
-}
-#error-message{
+/* Waring message & error message showing */
+#warning-message,#warning-message2,#warning-message3,#warning-message4,#error-message,#error-message2{
   color: red;
   font-weight:500;
   display: none;

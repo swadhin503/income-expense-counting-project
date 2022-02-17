@@ -8,10 +8,6 @@ function gettingInputValue(value){
 }
 // function for showing the amounts in html
 function showingBalance(elementId,amount){
-    // if(isNaN(amount)){
-    //     document.getElementById('warning-message').style.display=("block");
-    // }
-    // else
     document.getElementById(elementId).innerText = amount;
 }
 // Calculate Button Event
@@ -21,23 +17,28 @@ document.getElementById('calculate-button').addEventListener('click',function(){
     const foodAmount = gettingInputValue('food');
     const rentAmount = gettingInputValue('rent');
     const clothesAmount = gettingInputValue('clothes'); 
-    // showing total expenses & balance in html 
+    // showing total expenses & balance in html with error handling 
     if (isNaN(incomeAmount) || isNaN(foodAmount) || isNaN(rentAmount) || isNaN(clothesAmount)){
         document.getElementById('warning-message').style.display=("block");
+        document.getElementById('warning-message2').style.display=("none");
     }
     else if (incomeAmount<0 || foodAmount<0 || rentAmount<0 || clothesAmount<0){
         document.getElementById('warning-message2').style.display=("block");
+        document.getElementById('warning-message').style.display=("none");
     }
     else{ 
         const totalExpenses = foodAmount + rentAmount + clothesAmount;
         const balance = incomeAmount - totalExpenses;
+        document.getElementById('warning-message').style.display=("none");
+         document.getElementById('warning-message2').style.display=("none");
         if (totalExpenses > incomeAmount) {
             document.getElementById('error-message').style.display=("block");
         }  
-        showingBalance('total-expenses',totalExpenses);
-        showingBalance('balance',balance);
-        document.getElementById('warning-message').style.display=("none");
-        document.getElementById('warning-message2').style.display=("none");
+        else{ 
+            showingBalance('total-expenses',totalExpenses);
+            showingBalance('balance',balance);
+            document.getElementById('error-message').style.display=("none");
+        }
     }
 
 })
@@ -48,17 +49,29 @@ document.getElementById('save-button').addEventListener('click',function(){
     const incomeAmount = gettingInputValue('income');
     if(isNaN(savePercentage)){
         document.getElementById('warning-message3').style.display=("block");
+
+        document.getElementById('warning-message4').style.display=("none");
     }
     else if(savePercentage < 0){
         document.getElementById('warning-message4').style.display=("block");
+        document.getElementById('warning-message3').style.display=("none");
     }
     else {
-        const saveAmount =Math.round((savePercentage/100) * incomeAmount);
         document.getElementById('warning-message3').style.display=("none");
         document.getElementById('warning-message4').style.display=("none");
-        showingBalance('saving-amount',saveAmount);
-        const balance = parseInt(document.getElementById('balance').innerText)
+
+        const saveAmount =Math.round((savePercentage/100) * incomeAmount);
+        const balance = parseInt(document.getElementById('balance').innerText);
         const remainingBalance = balance - saveAmount;
-        showingBalance('remaining-balance',remainingBalance);
+
+        if(remainingBalance < 0){
+            document.getElementById('error-message2').style.display=("block");
+        }
+        else{
+            showingBalance('saving-amount',saveAmount);
+            showingBalance('remaining-balance',remainingBalance);
+            document.getElementById('error-message2').style.display=("none");
+        }
+        
     }
 })
